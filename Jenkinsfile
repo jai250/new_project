@@ -26,8 +26,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying ${APP_NAME}..."
-                // Add your deploy logic here
+              echo 'Deploying the application...'
+                sh '''
+                  mkdir -p /tmp/deploy_app
+                  cp -r * /tmp/deploy_app/
+                  echo "Application deployed to /tmp/deploy_app"
+                '''
             }
         }
     }
